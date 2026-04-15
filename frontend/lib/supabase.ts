@@ -1,11 +1,9 @@
-import { createBrowserClient } from "@supabase/ssr";
+import { createClient } from "@supabase/supabase-js";
 
-/**
- * Singleton Supabase browser client for use in Client Components.
- * For Server Components / Route Handlers, create a new server client
- * using createServerClient() from @supabase/ssr with cookie handling.
- */
-export const supabase = createBrowserClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+
+export const supabase =
+  typeof window !== "undefined" && supabaseUrl?.startsWith("http")
+    ? createClient(supabaseUrl, supabaseAnonKey)
+    : (null as any);
