@@ -45,17 +45,20 @@ const PLANS = [
   {
     name: "Starter",
     price: 59,
+    checkoutUrl: "https://launchkitdev.lemonsqueezy.com/checkout/buy/64e7627f-0f82-44df-bf38-b9db61836376",
     features: ["1 project", "5 GB storage", "Community support", "All core features"],
   },
   {
     name: "Pro",
     price: 99,
     highlight: true,
+    checkoutUrl: "https://launchkitdev.lemonsqueezy.com/checkout/buy/10c771b8-c378-45b8-8ea1-6b84451a0c32",
     features: ["5 projects", "20 GB storage", "Priority email support", "Advanced analytics"],
   },
   {
     name: "Team",
     price: 149,
+    checkoutUrl: "https://launchkitdev.lemonsqueezy.com/checkout/buy/3135354e-b21f-4a81-a85e-d0c89c33237f",
     features: ["Unlimited projects", "100 GB storage", "Dedicated support", "Team collaboration"],
   },
 ];
@@ -88,12 +91,14 @@ export default function LandingPage() {
             >
               Sign in
             </Link>
-            <Link
-              href="/register"
+            <a
+              href="https://launchkitdev.lemonsqueezy.com/checkout/buy/10c771b8-c378-45b8-8ea1-6b84451a0c32"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-md bg-primary px-4 py-1.5 text-sm font-medium text-primary-foreground hover:opacity-90"
             >
               Get started
-            </Link>
+            </a>
           </div>
         </div>
       </header>
@@ -210,8 +215,10 @@ export default function LandingPage() {
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    href="/billing"
+                  <a
+                    href={plan.checkoutUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`mt-8 block rounded-md px-4 py-2 text-center text-sm font-semibold transition-opacity hover:opacity-90 ${
                       plan.highlight
                         ? "bg-background text-foreground"
@@ -219,7 +226,7 @@ export default function LandingPage() {
                     }`}
                   >
                     Buy {plan.name}
-                  </Link>
+                  </a>
                 </div>
               ))}
             </div>
